@@ -1,6 +1,6 @@
 import type { NextPage } from "next"; 
 
-const WindePage: NextPage = () => {
+const white: NextPage = () => {
     return (
         <div>
             <h1>white Wine</h1>
@@ -8,4 +8,4 @@ const WindePage: NextPage = () => {
     )
 }
 
-export default WindePage;
+export default white;
