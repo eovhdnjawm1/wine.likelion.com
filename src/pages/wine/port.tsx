@@ -1,5 +1,5 @@
 import type { NextPage } from "next"; 
-import useSWR from 'swr';
+import {Error, Loading, WineCard} from "../../components";
 import { useWindeData } from "../../hooks/useWineData";
 import { Wine} from "../../types/Wine"
 
@@ -12,8 +12,8 @@ const port: NextPage = () => {
     const { data, error } = useWindeData(name)
 
 // swr 이 알아서 뱉어준다. data면 data error 면 에러
-if(error) return <div>Failed to Loading...</div>
-if(!data) return <div>...Loading</div>
+if(error) return <Error />
+if(!data) return <Loading />
 
     return (
         <div>
@@ -21,12 +21,15 @@ if(!data) return <div>...Loading</div>
             <main>
                 {/* 리엑트에서 map함수 쓸꺼면 언제나 key입력 */}
                 { data.map((wineData: Wine) => {
-                    const { id, wine, winery} = wineData;
+                    // const { id, wine, winery} = wineData;
                     return (
-                        <div key={`port-wine-list-${wineData.id}`}>
-                            <h1>{wine}</h1>
-                            <p>{winery}</p>
-                        </div>
+                        <WineCard key = {`port-wine-list-${wineData.id}`}
+                        wineData={wineData}
+                        />
+                        // <div key={`port-wine-list-${wineData.id}`}>
+                        //     <h1>{wine}</h1>
+                        //     <p>{winery}</p>
+                        // </div>
                     )
                 })}
             </main>

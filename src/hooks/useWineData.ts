@@ -6,4 +6,4 @@ export const useWindeData = (path: string) => {
     return useSWR(`${WINE_API_ENDPOINT}${path}`, fetcher);
 }
 
-const { data, error } = useSWR('https://api.sampleapis.com/wines/port', fetcher);
+// const { data, error } = useSWR('https://api.sampleapis.com/wines/port', fetcher);
